@@ -102,7 +102,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   bodyWidget() {
-    return SingleChildScrollView(
+    return
+      popularMovie!=null&& popularMovie!.isNotEmpty||topRated!=null&& topRated!.isNotEmpty||upcoming!=null&& upcoming!.isNotEmpty?
+      SingleChildScrollView(
         child:  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: Column(
@@ -182,6 +184,6 @@ class _HomePageState extends State<HomePage> {
           ),
         )
 
-    );
+    ):Utils.noData();
   }
 }
