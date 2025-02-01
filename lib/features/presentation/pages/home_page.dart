@@ -1,6 +1,7 @@
 import 'package:clean_architecture/features/presentation/widgets/poster_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/utils/globals.dart';
 import '../../../core/utils/utils.dart';
 import '../../domain/entities/movie.dart';
 import '../bloc/movie_block.dart';
@@ -59,7 +60,9 @@ class _HomePageState extends State<HomePage> {
                   GestureDetector(
                       onTap: widget.toggleTheme,
                       child: Icon(
-                        Icons.toggle_on_outlined,
+
+                        isDarkTheme? Icons.toggle_on_outlined:
+                        Icons.toggle_off_outlined,
                         size: 40,
                         color: Colors.white,
                       )),

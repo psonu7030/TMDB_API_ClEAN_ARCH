@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'config/theme/app_theme.dart';
+import 'core/utils/globals.dart';
 import 'features/data/repositories/api/movie_api.dart';
 import 'features/presentation/bloc/movie_block.dart';
 import 'features/presentation/pages/home_page.dart';
@@ -17,14 +18,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isDarkTheme = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: _isDarkTheme ? ThemeMode.dark : ThemeMode.light,
+      themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
       home:  BlocProvider<MovieBloc>(
         create: (context) => MovieBloc(movieApiService: MovieApi()),
     child:  HomePage( toggleTheme: _toggleTheme,),
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 
   void _toggleTheme() {
     setState(() {
-      _isDarkTheme = !_isDarkTheme; // Toggle theme
+      isDarkTheme=!isDarkTheme;
     });
   }
 }
